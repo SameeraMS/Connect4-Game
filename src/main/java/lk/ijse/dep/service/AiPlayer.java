@@ -23,4 +23,6 @@ public class AiPlayer extends Player {
             board.getBoardUI().notifyWinner(new Winner(Piece.EMPTY));
         }
     }
+
+        //minimax algorithem
 }
