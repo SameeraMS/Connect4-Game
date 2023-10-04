@@ -39,7 +39,7 @@ public class BoardImpl implements Board{
             //if there is a available spot
             return true;
         } else {
-            //there is no raw
+            //if there is no raw
             return false;
         }
     }
