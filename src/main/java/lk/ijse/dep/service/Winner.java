@@ -74,4 +74,5 @@ public class Winner {
                 ", row2=" + row2 +
                 '}';
     }
+
 }
