@@ -11,6 +11,7 @@ public class BoardImpl implements Board{
 
         for (int i=0; i < NUM_OF_COLS; i++){
             for (int j=0; j < NUM_OF_ROWS; j++){
+                //set empty to all
                 pieces[i][j] = Piece.EMPTY;
             }
         }
@@ -26,6 +27,7 @@ public class BoardImpl implements Board{
         //find next available row
         for (int i=0; i < NUM_OF_ROWS; i++){
             if (pieces[col][i] == Piece.EMPTY){
+                //return next available row element
                 return i;
             }
         }
@@ -39,13 +41,13 @@ public class BoardImpl implements Board{
             //if there is a available spot
             return true;
         } else {
-            //if there is no raw
+            //if column is full
             return false;
         }
     }
 
     @Override
-    public boolean existLegalMoves() {
+    public boolean existLegalMoves() {              //check there is a legal move
         for (int i =0; i < NUM_OF_COLS; i++){
             if (isLegalMove(i)){
                 return true;
@@ -60,13 +62,14 @@ public class BoardImpl implements Board{
     }
 
     @Override
-    public void updateMove(int col, int row, Piece move) {
-
+    public void updateMove(int col, int row, Piece move) {      //minimax
+        pieces[col][row] = move;
     }
 
     @Override
     public Winner findWinner() {
 
+        //connect 4 piece horizontally
         for (int i=0; i<NUM_OF_ROWS; i++){
             for (int j=0; j<NUM_OF_COLS/2; j++){
                 if((!pieces[j][i].equals(Piece.EMPTY)) && pieces[j][i].equals(pieces[j+1][i]) && pieces[j][i].equals(pieces[j+2][i]) && pieces[j][i].equals(pieces[j+3][i])){
@@ -74,6 +77,8 @@ public class BoardImpl implements Board{
                 }
             }
         }
+
+        //connect 4 pieces vertically
         for (int j=0; j<NUM_OF_COLS; j++){
             for (int i=0; i<NUM_OF_ROWS/2; i++){
                 if (!pieces[j][i].equals(Piece.EMPTY) && pieces[j][i].equals(pieces[j][i+1]) && pieces[j][i].equals(pieces[j][i+2]) && pieces[j][i].equals(pieces[j][i+3])){
