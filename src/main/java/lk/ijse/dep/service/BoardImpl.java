@@ -11,7 +11,7 @@ public class BoardImpl implements Board{
 
         for (int i=0; i < NUM_OF_COLS; i++){
             for (int j=0; j < NUM_OF_ROWS; j++){
-                //set empty to all
+                //set empty to all pieces
                 pieces[i][j] = Piece.EMPTY;
             }
         }
@@ -31,7 +31,7 @@ public class BoardImpl implements Board{
                 return i;
             }
         }
-        //if coloumn full return -1
+        //if column full return -1
         return -1;
     }
 

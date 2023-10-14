@@ -22,7 +22,7 @@ public class MctsAlgorithm extends Player {
                     if (board.isLegalMove(i)){
                         row = board.findNextAvailableSpot(i);
                         board.updateMove(i,Piece.BLUE);
-                        heuristicVal = MctsAlgorithm.minimax(depth + 1,true, board);
+                        heuristicVal = minimax(depth + 1,true, board);
                         board.updateMove(i,row,Piece.EMPTY);
                         if (heuristicVal == -1){
                             return heuristicVal;
@@ -34,7 +34,7 @@ public class MctsAlgorithm extends Player {
                     if (board.isLegalMove(i)){
                         row = board.findNextAvailableSpot(i);
                         board.updateMove(i,Piece.GREEN);
-                        heuristicVal = MctsAlgorithm.minimax(depth + 1,false,board);
+                        heuristicVal = minimax(depth + 1,false, board);
                         board.updateMove(i,row,Piece.EMPTY);
                         if (heuristicVal == 1){
                             return heuristicVal;
