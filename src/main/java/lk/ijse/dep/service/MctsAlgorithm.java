@@ -5,7 +5,7 @@ public class MctsAlgorithm extends Player {
         super(board);
     }
 
-    public static int minimax(int depth, boolean maximizingPlayer, Board board) {
+    public static int mctsAlgo(int depth, boolean maximizingPlayer, Board board) {
 
         Winner winner = board.findWinner();
         if (winner.getWinningPiece() == Piece.GREEN){
@@ -22,7 +22,7 @@ public class MctsAlgorithm extends Player {
                     if (board.isLegalMove(i)){
                         row = board.findNextAvailableSpot(i);
                         board.updateMove(i,Piece.BLUE);
-                        heuristicVal = minimax(depth + 1,true, board);
+                        heuristicVal = mctsAlgo(depth + 1,true, board);
                         board.updateMove(i,row,Piece.EMPTY);
                         if (heuristicVal == -1){
                             return heuristicVal;
@@ -34,7 +34,7 @@ public class MctsAlgorithm extends Player {
                     if (board.isLegalMove(i)){
                         row = board.findNextAvailableSpot(i);
                         board.updateMove(i,Piece.GREEN);
-                        heuristicVal = minimax(depth + 1,false, board);
+                        heuristicVal = mctsAlgo(depth + 1,false, board);
                         board.updateMove(i,row,Piece.EMPTY);
                         if (heuristicVal == 1){
                             return heuristicVal;

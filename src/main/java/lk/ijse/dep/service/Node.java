@@ -15,7 +15,7 @@ public class Node extends Player{
             if (board.isLegalMove(i)){
                 int row = board.findNextAvailableSpot(i);
                 board.updateMove(i,Piece.GREEN);
-                int heuristicVal = MctsAlgorithm.minimax(0,false,board);
+                int heuristicVal = MctsAlgorithm.mctsAlgo(0,false,board);
                 board.updateMove(i,row,Piece.EMPTY);
                 if (heuristicVal == 1){
                     return i;
